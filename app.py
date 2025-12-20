@@ -9,4 +9,4 @@ def home():
     return f"<h1>[로컬에서 수정함] 현재 서버 시간: {now}</h1>"
 
 if __name__ == '__main__':
-    app.run(host='0,0,0,0', port=5000)
+    app.run(host='0.0.0.0', port=5000)
