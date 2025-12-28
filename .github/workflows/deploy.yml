@@ -15,7 +15,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
           port: 22
-          script: |
+          script:
             cd /home/ubuntu/aws-flask-study
             git pull origin master
             ./deploy.sh
