@@ -39,7 +39,7 @@ def delete(id):
     conn = sqlite3.connect('database.db')
     c = conn.cursor()
     # sql 핵심 guests 테이블에서 id가 일치하는 행을 지워라
-    c.execute('DELETE FROM guests WHERE id = ?'(id,))
+    c.execute('DELETE FROM guests WHERE id = ?', (id,))
     conn.commit()
     conn.close()
     # 지우고 나면 다시 방명록 메인 화면으로 이동
