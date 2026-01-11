@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>나의 방명록</title>
+</head>
+<body>
+    <h1>🏠 어서오세요! 방명록입니다</h1>
+    
+    <form action="/add" method="post">
+        <input type="text" name="name" placeholder="이름" required>
+        <input type="text" name="message" placeholder="남길 말" required>
+        <button type="submit">등록</button>
+    </form>
+
+    <hr>
+
+    <h2>📝 남긴 글들</h2>
+    <ul>
+        <div style="border:1px solid gray; padding:10px; margin:5px;">
+    <strong>{{ row[1] }}</strong>: {{ row[2] }}
+    <form action="{{ url_for('delete', id=row[0]) }}" method="POST" style="display:inline;">
+        <button type="submit" onclick="return confirm('진짜 지울거야?');">삭제</button>
+    </form>
+</div>
+        
+    </ul>
+</body>
+</html>
