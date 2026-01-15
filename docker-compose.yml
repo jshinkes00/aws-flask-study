@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  flask-app:            # 서비스 이름 (내 맘대로)
+    build: .            # 현재 폴더 Dockerfile로 빌드해라
+    container_name: my-container
+    ports:
+      - "5000:5000"     # 5000번 포트 열어라
+    volumes:
+      - ./database.db:/app/database.db  # DB 파일 지키기
+    restart: always     # 서버 재부팅 되면 너도 다시 켜져
