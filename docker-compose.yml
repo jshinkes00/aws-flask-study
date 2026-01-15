@@ -8,7 +8,8 @@ services:
     volumes:
       - ./database.db:/app/database.db
     restart: always
-    #  ports: - "5000:5000" 부분을 삭제
+    ports:
+      - "5000:5000"
     # 외부에서 내부 접근 불가
 
   # 2. (Nginx) - 새로 추가
