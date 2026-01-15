@@ -1,11 +1,23 @@
 version: '3.8'
 
 services:
-  flask-app:            # 서비스 이름 (내 맘대로)
-    build: .            # 현재 폴더 Dockerfile로 빌드해라
-    container_name: my-container
-    ports:
-      - "5000:5000"     # 5000번 포트 열어라
+  # 1. 주방장 (Flask)
+  flask-app:
+    build: .
+    container_name: flask-container
     volumes:
-      - ./database.db:/app/database.db  # DB 파일 지키기
-    restart: always     # 서버 재부팅 되면 너도 다시 켜져
+      - ./database.db:/app/database.db
+    restart: always
+    #  ports: - "5000:5000" 부분을 삭제
+    # 외부에서 내부 접근 불가
+
+  # 2. (Nginx) - 새로 추가
+  nginx:
+    image: nginx:latest
+    container_name: nginx-container
+    ports:
+      - "80:80"  # 외부(80) -> nginx(80) 연결
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf  # 아까 만든 메뉴얼 전달
+    depends_on:
+      - flask-app  # flask 가 가능해야 nginx도 가능(순서 보장)
