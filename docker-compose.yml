@@ -21,4 +21,4 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf  # 아까 만든 메뉴얼 전달
     depends_on:
-      - flask-app  # flask 가 가능해야 nginx도 가능(순서 보장)
+      - flask-app  # flask 가 가능해야 nginx도 가능(순서 보장)F
