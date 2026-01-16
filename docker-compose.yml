@@ -20,5 +20,6 @@ services:
       - "443:443" # 외부(80) -> nginx(80) 연결
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf  # 아까 만든 메뉴얼 전달
+      - /etc/letsencrypt:/etc/letsencrypt # 인증서 폴더를 도커에게 공유
     depends_on:
       - flask-app  # flask 가 가능해야 nginx도 가능(순서 보장)F
